@@ -22,7 +22,7 @@ function createBtnClick() {
 
 function createBoxes(amount) {
   const boxesContainer = document.querySelector('#boxes');
-  boxesContainer.innerHTML = '';
+  const fragment = document.createDocumentFragment();
 
   let boxSize = 30;
   for (let i = 0; i < amount; i++) {
@@ -31,9 +31,12 @@ function createBoxes(amount) {
     box.style.backgroundColor = randomColor;
     box.style.width = `${boxSize}px`;
     box.style.height = `${boxSize}px`;
-    boxesContainer.appendChild(box);
+    fragment.appendChild(box);
     boxSize += 10;
   }
+
+  boxesContainer.innerHTML = '';
+  boxesContainer.appendChild(fragment);
 }
 
 function destroyBtnClick() {
